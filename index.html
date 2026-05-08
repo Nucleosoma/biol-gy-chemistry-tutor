@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Репетитор по биологии и химии</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lora', serif;
+  color: #2f4f3a;
+
+  background:
+    linear-gradient(rgba(245,250,245,0.93), rgba(245,250,245,0.93)),
+    url('https://images.unsplash.com/photo-1497250681960-ef046c08a56e');
+
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* контейнер */
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* заголовки */
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* блоки + анимация (исправлено) */
+.block {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(12px);
+
+  padding: 24px;
+  margin: 18px 0;
+
+  border-radius: 18px;
+  border: 1px solid rgba(120,160,120,0.2);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.block:nth-of-type(1) { animation-delay: 0.1s; }
+.block:nth-of-type(2) { animation-delay: 0.2s; }
+.block:nth-of-type(3) { animation-delay: 0.3s; }
+.block:nth-of-type(4) { animation-delay: 0.4s; }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* аккордеон (исправлен UX) */
+.acc-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #eaf6ee;
+  color: #2f4f3a;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.acc-btn:hover {
+  background: #dff3e6;
+}
+
+.acc-content {
+  max-height: 0;
+  overflow: hidden;
+
+  padding: 0 12px;
+  opacity: 0;
+
+  background: white;
+  border-radius: 10px;
+
+  transition: all 0.35s ease;
+  text-align: center;
+}
+
+/* открытое состояние */
+.acc-content.open {
+  padding: 12px;
+  opacity: 1;
+}
+
+/* кнопки */
+.button {
+  display: block;
+  text-align: center;
+  margin: 12px 0;
+  padding: 14px;
+
+  border-radius: 12px;
+  text-decoration: none;
+
+  color: white;
+  font-weight: 500;
+
+  background: linear-gradient(135deg, #6fcf97, #4caf7a);
+
+  transition: 0.3s;
+}
+
+.button:hover {
+  transform: scale(1.04);
+}
+
+/* floating кнопка */
+.floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  background: #25d366;
+  color: white;
+
+  padding: 14px 18px;
+  border-radius: 50px;
+
+  text-decoration: none;
+  font-weight: bold;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+  transition: 0.3s;
+}
+
+.floating:hover {
+  transform: scale(1.08);
+}
+
+/* форма */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, textarea {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #cfe3d5;
+  font-family: inherit;
+}
+
+textarea {
+  resize: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Репетитор по биологии и химии</h1>
+
+<div class="block">
+<h2>Обо мне</h2>
+<p>Преподаватель с опытом подготовки к IGCSE, AP и A-level. Объясняю сложное простым языком.</p>
+</div>
+
+<div class="block">
+<h2>Форматы занятий</h2>
+
+<button class="acc-btn">45 минут</button>
+<div class="acc-content">20 €</div>
+
+<button class="acc-btn">80 минут (экзамены)</button>
+<div class="acc-content">40 €</div>
+
+<button class="acc-btn">Групповой 45 минут</button>
+<div class="acc-content">15 €</div>
+
+<button class="acc-btn">Групповой 80 минут</button>
+<div class="acc-content">30 €</div>
+
+</div>
+
+<div class="block">
+<h2>Методика</h2>
+<p>✔ Простое объяснение<br>✔ Визуальные схемы<br>✔ Практика<br>✔ Симуляции</p>
+</div>
+
+<div class="block">
+<h2>Записаться</h2>
+
+<form>
+<input type="text" placeholder="Ваше имя">
+<input type="email" placeholder="Email">
+<textarea rows="4" placeholder="Что хотите изучать?"></textarea>
+<button class="button" type="submit">Отправить</button>
+</form>
+
+</div>
+
+<div class="block">
+<h2>Контакты</h2>
+<a class="button" href="mailto:ekaterinaapply@gmail.com">Email</a>
+<a class="button" href="https://t.me/Restless_Mitochondria">Telegram</a>
+</div>
+
+</div>
+
+<!-- floating button -->
+<a class="floating" href="https://t.me/Restless_Mitochondria">Telegram</a>
+
+<script>
+document.querySelectorAll('.acc-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const content = btn.nextElementSibling;
+
+    if (content.classList.contains('open')) {
+      content.style.maxHeight = null;
+      content.classList.remove('open');
+    } else {
+      document.querySelectorAll('.acc-content').forEach(c => {
+        c.style.maxHeight = null;
+        c.classList.remove('open');
+      });
+
+      content.style.maxHeight = content.scrollHeight + "px";
+      content.classList.add('open');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
