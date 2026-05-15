@@ -10,23 +10,17 @@
 
 <style>
 
-/* smooth */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
-/* BODY — deeper premium look */
 body {
   margin: 0;
   font-family: 'Lora', serif;
   color: #1f3227;
   line-height: 1.7;
-  letter-spacing: 0.25px;
 
   background:
     radial-gradient(circle at 15% 15%, rgba(111,207,151,0.18), transparent 42%),
     radial-gradient(circle at 85% 10%, rgba(76,175,122,0.14), transparent 40%),
-    radial-gradient(circle at 60% 90%, rgba(46,139,87,0.10), transparent 45%),
     linear-gradient(rgba(245,250,245,0.92), rgba(245,250,245,0.97)),
     url('https://images.unsplash.com/photo-1497250681960-ef046c08a56e');
 
@@ -36,179 +30,213 @@ body {
 
 /* container */
 .container {
-  max-width: 740px;
+  max-width: 760px;
   margin: auto;
   padding: 60px 20px;
 }
 
-/* HEADINGS */
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 35px 20px 10px;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(99,212,143,0.25), transparent 70%);
+  filter: blur(20px);
+  z-index: -1;
+}
+
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 44px;
+  font-size: 46px;
   font-weight: 500;
-  text-align: center;
-  margin-bottom: 8px;
-  letter-spacing: 0.5px;
+  margin-bottom: 10px;
 }
 
-h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 500;
-  text-align: center;
-  margin-bottom: 18px;
-}
-
-/* subtitle */
 .subtitle {
-  text-align: center;
-  opacity: 0.65;
-  margin-top: 0;
-  margin-bottom: 30px;
+  opacity: 0.7;
 }
 
-/* BLOCKS — more depth */
+/* HERO CTA */
+.hero-cta {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 14px 22px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #63d48f, #3fa86b);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 18px 40px rgba(63,168,107,0.35);
+  transition: 0.3s;
+}
+
+.hero-cta:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
+/* BLOCK */
 .block {
-  background: rgba(255,255,255,0.42);
-  backdrop-filter: blur(24px);
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(26px);
 
   padding: 30px;
   margin: 22px 0;
 
-  border-radius: 24px;
+  border-radius: 26px;
 
-  border: 1px solid rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.65);
 
   box-shadow:
-    0 30px 80px rgba(0,0,0,0.09),
+    0 10px 20px rgba(0,0,0,0.04),
+    0 25px 60px rgba(0,0,0,0.08),
     inset 0 1px 0 rgba(255,255,255,0.7);
 
   transition: all 0.35s ease;
 }
 
-/* ASYMMETRY (premium feel) */
-.block:nth-child(odd) {
-  transform: translateX(-3px);
-}
-
-.block:nth-child(even) {
-  transform: translateX(3px);
-}
-
 .block:hover {
   transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 40px 110px rgba(0,0,0,0.14);
+}
+
+/* section divider */
+.block + .block::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.08), transparent);
 }
 
 /* TEXT */
-p {
+h2 {
   text-align: center;
-  font-size: 16.5px;
-  opacity: 0.92;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
 }
 
 /* ACCORDION */
+.method-item {
+  position: relative;
+  border-radius: 16px;
+  transition: 0.3s;
+}
+
+/* micro glow on open */
+.method-item:has(.acc-content.open) {
+  background: rgba(99,212,143,0.06);
+  box-shadow: 0 10px 25px rgba(63,168,107,0.10);
+  padding: 4px;
+}
+
+/* BUTTON */
 .acc-btn {
   width: 100%;
-  padding: 16px 0;
+  padding: 16px 18px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(0,0,0,0.07);
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
 
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 500;
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 16px;
 
   cursor: pointer;
 
-  transition: all 0.25s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+
+  transition: 0.3s;
+
+  margin-top: 10px;
 }
 
-/* stronger hover (more “premium product”) */
 .acc-btn:hover {
-  opacity: 0.75;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
 }
 
-/* arrow */
 .acc-btn::after {
   content: "→";
-  opacity: 0.5;
-  transition: 0.25s ease;
-}
-
-.acc-btn:hover::after {
-  transform: translateX(4px);
-  opacity: 1;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(99,212,143,0.15);
+  color: #3fa86b;
+  transition: 0.3s;
 }
 
 .acc-btn.open::after {
   transform: rotate(90deg);
-  opacity: 1;
 }
 
-/* CONTENT */
+/* CONTENT + BOUNCE */
 .acc-content {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: all 0.35s ease;
+  transform: translateY(-6px);
+
+  padding: 0 16px;
+
+  transition:
+    max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .acc-content.open {
   opacity: 1;
-  padding: 12px 0 16px 0;
+  transform: translateY(0);
+  padding: 12px 16px 16px 16px;
+  animation: bounceIn 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* BUTTONS — more aggressive premium CTA */
+@keyframes bounceIn {
+  0% { transform: translateY(-6px); }
+  60% { transform: translateY(2px); }
+  100% { transform: translateY(0); }
+}
+
+/* BUTTON CTA */
 .button {
   display: block;
   text-align: center;
-
   margin: 14px 0;
   padding: 16px;
 
   border-radius: 16px;
-
-  text-decoration: none;
   color: white;
-
   font-weight: 600;
-  letter-spacing: 0.3px;
+  text-decoration: none;
 
   background: linear-gradient(135deg, #63d48f, #3fa86b);
 
   box-shadow:
-    0 18px 40px rgba(63,168,107,0.35),
-    inset 0 1px 0 rgba(255,255,255,0.25);
+    0 10px 20px rgba(63,168,107,0.25),
+    0 25px 60px rgba(63,168,107,0.35);
 
-  transition: all 0.25s ease;
-
-  position: relative;
+  transition: 0.3s;
 }
 
-/* stronger hover = more “premium product feel” */
 .button:hover {
   transform: translateY(-3px) scale(1.03);
-  box-shadow:
-    0 25px 60px rgba(63,168,107,0.45);
-}
-
-/* arrow */
-.button::after {
-  content: "↗";
-  position: absolute;
-  right: 16px;
-  opacity: 0.85;
-  transition: 0.2s;
-}
-
-.button:hover::after {
-  transform: translateX(5px);
 }
 
 /* floating */
@@ -216,59 +244,19 @@ p {
   position: fixed;
   bottom: 22px;
   right: 22px;
-
   background: linear-gradient(135deg, #25d366, #1ebe5b);
-
   color: white;
   padding: 14px 20px;
-
   border-radius: 50px;
-
   font-weight: 600;
-
-  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-
   text-decoration: none;
-
-  transition: 0.3s;
-}
-
-.floating:hover {
-  transform: scale(1.1);
-}
-
-/* form */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-input, textarea {
-  padding: 13px;
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.08);
-  font-family: inherit;
-  transition: 0.2s;
-}
-
-input:focus, textarea:focus {
-  outline: none;
-  border-color: rgba(63,168,107,0.4);
-  box-shadow: 0 0 0 3px rgba(63,168,107,0.1);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
 }
 
 /* mobile */
 @media (max-width: 600px) {
-  h1 {
-    font-size: 34px;
-  }
-
-  .block {
-    margin: 16px 0;
-    padding: 22px;
-    transform: none !important;
-  }
+  h1 { font-size: 34px; }
+  .block { margin: 16px 0; padding: 22px; }
 }
 
 </style>
@@ -278,46 +266,103 @@ input:focus, textarea:focus {
 
 <div class="container">
 
+<!-- HERO -->
+<div class="hero">
 <h1>Репетитор по биологии и химии</h1>
-
-<p class="subtitle">
-Подготовка IGCSE • A-level • AP Biology & Chemistry
-</p>
-
-<div class="block">
-<h2>Обо мне</h2>
-<p>
-Преподаватель с опытом подготовки к IGCSE, AP и A-level. Объясняю сложное простым языком через структуру, визуальное мышление и нейропсихологический подход.
-</p>
+<p class="subtitle">IGCSE • A-level • AP Biology & Chemistry</p>
+<a class="hero-cta" href="#contact">Бесплатная консультация</a>
 </div>
 
+<!-- ABOUT -->
 <div class="block">
-<h2>Методика обучения</h2>
+<h2>Образование и опыт</h2>
 
 <div class="method-item">
-<button class="acc-btn">Простое объяснение</button>
-<div class="acc-content">Сложные темы объясняются через ассоциации и логические модели.</div>
+<button class="acc-btn">КФУ — биохимия</button>
+<div class="acc-content">
+Красный диплом. Начало преподавания с 2 курса.
+</div>
 </div>
 
 <div class="method-item">
-<button class="acc-btn">Визуальные схемы</button>
-<div class="acc-content">Mind maps и визуальные опоры для системного понимания.</div>
+<button class="acc-btn">PhD Страсбург</button>
+<div class="acc-content">
+Международная аспирантура Россия–Франция. PhD с высшей оценкой.
+</div>
+</div>
+
+<div class="method-item">
+<button class="acc-btn">Международные школы</button>
+<div class="acc-content">
+Герценовский университет + Le Sallay Academy & Dialogue.
+</div>
+</div>
+
+<div class="method-item">
+<button class="acc-btn">Билингвы</button>
+<div class="acc-content">
+Работа с учениками в русско-английской среде.
+</div>
+</div>
+
+</div>
+
+<!-- PSYCHOLOGY -->
+<div class="block">
+<h2>Подход к обучению</h2>
+
+<div class="method-item">
+<button class="acc-btn">Эмпатичный формат</button>
+<div class="acc-content">Без давления, с поддержкой и комфортом.</div>
+</div>
+
+<div class="method-item">
+<button class="acc-btn">Возрастная психология</button>
+<div class="acc-content">Адаптация под подростков и детей.</div>
+</div>
+
+<div class="method-item">
+<button class="acc-btn">Снижение стресса</button>
+<div class="acc-content">Подготовка без тревожности и перегруза.</div>
+</div>
+
+</div>
+
+<!-- PROCESS -->
+<div class="block">
+<h2>Как проходит урок</h2>
+
+<div class="method-item">
+<button class="acc-btn">Диагностика</button>
+<div class="acc-content">Определяем уровень.</div>
+</div>
+
+<div class="method-item">
+<button class="acc-btn">Объяснение</button>
+<div class="acc-content">Просто и структурно.</div>
 </div>
 
 <div class="method-item">
 <button class="acc-btn">Практика</button>
-<div class="acc-content">Решение экзаменационных заданий с разбором ошибок.</div>
+<div class="acc-content">Экзаменационные задания.</div>
 </div>
 
 <div class="method-item">
-<button class="acc-btn">Симуляции</button>
-<div class="acc-content">Интерактивные лаборатории и модели процессов.</div>
+<button class="acc-btn">Разбор</button>
+<div class="acc-content">Закрепление и рост.</div>
 </div>
 
 </div>
 
+<!-- RESULTS -->
 <div class="block">
-<h2>Форматы занятий</h2>
+<h2>Результаты</h2>
+<p>Стабильный рост учеников на экзаменах IGCSE, A-level, AP.</p>
+</div>
+
+<!-- FORMATS -->
+<div class="block">
+<h2>Форматы</h2>
 
 <button class="acc-btn">45 минут</button>
 <div class="acc-content">20 €</div>
@@ -325,48 +370,13 @@ input:focus, textarea:focus {
 <button class="acc-btn">80 минут</button>
 <div class="acc-content">40 €</div>
 
-<button class="acc-btn">Групповой формат</button>
-<div class="acc-content">до 3 человек, 15–30 €</div>
-
 </div>
 
-<div class="block">
-<h2>Частые вопросы</h2>
+<!-- CTA -->
+<div class="block" id="contact">
+<h2>Бесплатная консультация</h2>
+<p>Первая диагностика и план обучения.</p>
 
-<div class="method-item">
-<button class="acc-btn">Сколько человек в группе?</button>
-<div class="acc-content">Не более 3 человек, набор только по одной программе.</div>
-</div>
-
-<div class="method-item">
-<button class="acc-btn">Почему 80 минут?</button>
-<div class="acc-content">Оптимальное время для практики и теории без перегрузки.</div>
-</div>
-
-<div class="method-item">
-<button class="acc-btn">Возраст учеников?</button>
-<div class="acc-content">От 9 до 18 лет.</div>
-</div>
-
-</div>
-
-<div class="block">
-<h2>Запись на занятия</h2>
-
-<p>
-Оставьте заявку — я свяжусь с вами и подберу формат подготовки.
-</p>
-
-<form>
-<input type="text" placeholder="Ваше имя">
-<input type="email" placeholder="Email">
-<textarea rows="4" placeholder="Что хотите изучать?"></textarea>
-<button class="button" type="submit">Отправить заявку</button>
-</form>
-</div>
-
-<div class="block">
-<h2>Контакты</h2>
 <a class="button" href="mailto:ekaterinaapply@gmail.com">Email</a>
 <a class="button" href="https://t.me/Restless_Mitochondria">Telegram</a>
 </div>
