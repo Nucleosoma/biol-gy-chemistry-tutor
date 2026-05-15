@@ -10,6 +10,10 @@
 
 <style>
 
+/* ======================
+   BASE
+====================== */
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -35,7 +39,10 @@ body {
   padding: 60px 20px;
 }
 
-/* HERO */
+/* ======================
+   HERO (IVY LEAGUE STYLE)
+====================== */
+
 .hero {
   text-align: center;
   padding: 35px 20px 10px;
@@ -59,32 +66,17 @@ h1 {
   font-family: 'Playfair Display', serif;
   font-size: 46px;
   font-weight: 500;
-  margin-bottom: 10px;
+  line-height: 1.15;
 }
 
 .subtitle {
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
-/* HERO CTA */
-.hero-cta {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 14px 22px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #63d48f, #3fa86b);
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 18px 40px rgba(63,168,107,0.35);
-  transition: 0.3s;
-}
+/* ======================
+   BLOCKS (PREMIUM GLASS)
+====================== */
 
-.hero-cta:hover {
-  transform: translateY(-3px) scale(1.03);
-}
-
-/* BLOCK */
 .block {
   background: rgba(255,255,255,0.45);
   backdrop-filter: blur(26px);
@@ -108,35 +100,13 @@ h1 {
   transform: translateY(-6px) scale(1.01);
 }
 
-/* section divider */
-.block + .block::before {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: 10%;
-  width: 80%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(0,0,0,0.08), transparent);
-}
+/* ======================
+   ACCORDION BUTTONS (ULTRA PREMIUM)
+====================== */
 
-/* TEXT */
-h2 {
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-weight: 500;
-}
-
-/* ACCORDION */
-.method-item {
-  position: relative;
-  border-radius: 16px;
-  transition: 0.3s;
-}
-
-/* micro glow on open */
 .method-item:has(.acc-content.open) {
   background: rgba(99,212,143,0.06);
-  box-shadow: 0 10px 25px rgba(63,168,107,0.10);
+  border-radius: 16px;
   padding: 4px;
 }
 
@@ -149,47 +119,92 @@ h2 {
   justify-content: space-between;
   align-items: center;
 
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0.55));
 
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.06);
   border-radius: 16px;
 
   cursor: pointer;
 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.06),
+    0 2px 6px rgba(0,0,0,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.9);
 
-  transition: 0.3s;
+  transition: all 0.25s ease;
 
   margin-top: 10px;
+
+  position: relative;
+  overflow: hidden;
 }
 
+/* hover glow sweep */
+.acc-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(99,212,143,0.12), transparent);
+  transition: 0.5s;
+}
+
+.acc-btn:hover::before {
+  left: 100%;
+}
+
+/* hover */
 .acc-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+  transform: translateY(-3px);
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.12),
+    0 6px 15px rgba(0,0,0,0.08);
 }
 
+/* active */
+.acc-btn.open {
+  background: linear-gradient(180deg, rgba(99,212,143,0.18), rgba(255,255,255,0.6));
+  border-color: rgba(63,168,107,0.25);
+}
+
+/* icon */
 .acc-btn::after {
   content: "→";
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(99,212,143,0.15);
-  color: #3fa86b;
+
+  border-radius: 50%;
+
+  background: rgba(99,212,143,0.18);
+
+  color: #2f6b47;
+  font-weight: bold;
+
   transition: 0.3s;
+}
+
+.acc-btn:hover::after {
+  transform: translateX(3px) rotate(5deg);
 }
 
 .acc-btn.open::after {
   transform: rotate(90deg);
 }
 
-/* CONTENT + BOUNCE */
+/* ======================
+   CONTENT (BOUNCE)
+====================== */
+
 .acc-content {
   max-height: 0;
   overflow: hidden;
+
   opacity: 0;
   transform: translateY(-6px);
 
@@ -214,14 +229,19 @@ h2 {
   100% { transform: translateY(0); }
 }
 
-/* BUTTON CTA */
+/* ======================
+   CTA BUTTON
+====================== */
+
 .button {
   display: block;
   text-align: center;
+
   margin: 14px 0;
   padding: 16px;
 
   border-radius: 16px;
+
   color: white;
   font-weight: 600;
   text-decoration: none;
@@ -229,8 +249,7 @@ h2 {
   background: linear-gradient(135deg, #63d48f, #3fa86b);
 
   box-shadow:
-    0 10px 20px rgba(63,168,107,0.25),
-    0 25px 60px rgba(63,168,107,0.35);
+    0 18px 40px rgba(63,168,107,0.35);
 
   transition: 0.3s;
 }
@@ -239,24 +258,135 @@ h2 {
   transform: translateY(-3px) scale(1.03);
 }
 
-/* floating */
-.floating {
+/* ======================
+   FLOATING BOOKING BUTTON
+====================== */
+
+.booking-fab {
   position: fixed;
-  bottom: 22px;
-  right: 22px;
-  background: linear-gradient(135deg, #25d366, #1ebe5b);
+  right: 20px;
+  bottom: 20px;
+
+  background: linear-gradient(135deg, #63d48f, #3fa86b);
   color: white;
-  padding: 14px 20px;
-  border-radius: 50px;
+
+  padding: 14px 18px;
+  border-radius: 999px;
+
   font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  cursor: pointer;
+
+  box-shadow:
+    0 20px 50px rgba(63,168,107,0.35);
+
+  z-index: 9999;
 }
 
-/* mobile */
-@media (max-width: 600px) {
-  h1 { font-size: 34px; }
-  .block { margin: 16px 0; padding: 22px; }
+/* ======================
+   BOOKING MODAL
+====================== */
+
+.booking-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: 0.3s;
+  z-index: 10000;
+}
+
+.booking-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.booking-modal {
+  width: 380px;
+  max-width: 90%;
+
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px);
+
+  border-radius: 22px;
+
+  padding: 20px;
+
+  box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+}
+
+/* form */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.booking-form input,
+.booking-form textarea,
+.booking-form select {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+/* submit */
+.booking-form button {
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #63d48f, #3fa86b);
+  color: white;
+  font-weight: 600;
+}
+
+/* ======================
+   STICKY CTA
+====================== */
+
+.sticky-cta {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f3227;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 999px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.sticky-cta.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ======================
+   REVEAL ANIMATION
+====================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 </style>
@@ -267,115 +397,70 @@ h2 {
 <div class="container">
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero reveal">
 <h1>Репетитор по биологии и химии</h1>
 <p class="subtitle">IGCSE • A-level • AP Biology & Chemistry</p>
-<a class="hero-cta" href="#contact">Бесплатная консультация</a>
 </div>
 
-<!-- ABOUT -->
-<div class="block">
-<h2>Образование и опыт</h2>
+<!-- EDUCATION -->
+<div class="block reveal">
+<h2>Образование</h2>
 
 <div class="method-item">
-<button class="acc-btn">КФУ — биохимия</button>
-<div class="acc-content">
-Красный диплом. Начало преподавания с 2 курса.
-</div>
+<button class="acc-btn">Казанский Федеральный Университет</button>
+<div class="acc-content">Биохимия, красный диплом.</div>
 </div>
 
 <div class="method-item">
 <button class="acc-btn">PhD Страсбург</button>
-<div class="acc-content">
-Международная аспирантура Россия–Франция. PhD с высшей оценкой.
-</div>
+<div class="acc-content">Международная аспиратура.</div>
 </div>
 
 <div class="method-item">
-<button class="acc-btn">Международные школы</button>
-<div class="acc-content">
-Герценовский университет + Le Sallay Academy & Dialogue.
+<button class="acc-btn">Международная школа</button>
+<div class="acc-content">Герценовский университет + Le Sallay.</div>
 </div>
+</div>
+
+<!-- APPROACH -->
+<div class="block reveal">
+<h2>Подход</h2>
+
+<div class="method-item">
+<button class="acc-btn">Эмпатия</button>
+<div class="acc-content">Без давления.</div>
 </div>
 
 <div class="method-item">
-<button class="acc-btn">Билингвы</button>
-<div class="acc-content">
-Работа с учениками в русско-английской среде.
+<button class="acc-btn">Психология</button>
+<div class="acc-content">Подростковый подход.</div>
 </div>
 </div>
 
-</div>
-
-<!-- PSYCHOLOGY -->
-<div class="block">
-<h2>Подход к обучению</h2>
+<!-- FAQ -->
+<div class="block reveal">
+<h2>FAQ</h2>
 
 <div class="method-item">
-<button class="acc-btn">Эмпатичный формат</button>
-<div class="acc-content">Без давления, с поддержкой и комфортом.</div>
+<button class="acc-btn">Группа?</button>
+<div class="acc-content">До 3 человек.</div>
 </div>
 
 <div class="method-item">
-<button class="acc-btn">Возрастная психология</button>
-<div class="acc-content">Адаптация под подростков и детей.</div>
+<button class="acc-btn">80 минут?</button>
+<div class="acc-content">Оптимум эффективности.</div>
 </div>
 
 <div class="method-item">
-<button class="acc-btn">Снижение стресса</button>
-<div class="acc-content">Подготовка без тревожности и перегруза.</div>
+<button class="acc-btn">Возраст?</button>
+<div class="acc-content">9–18 лет.</div>
 </div>
 
 </div>
 
-<!-- PROCESS -->
-<div class="block">
-<h2>Как проходит урок</h2>
-
-<div class="method-item">
-<button class="acc-btn">Диагностика</button>
-<div class="acc-content">Определяем уровень.</div>
-</div>
-
-<div class="method-item">
-<button class="acc-btn">Объяснение</button>
-<div class="acc-content">Просто и структурно.</div>
-</div>
-
-<div class="method-item">
-<button class="acc-btn">Практика</button>
-<div class="acc-content">Экзаменационные задания.</div>
-</div>
-
-<div class="method-item">
-<button class="acc-btn">Разбор</button>
-<div class="acc-content">Закрепление и рост.</div>
-</div>
-
-</div>
-
-<!-- RESULTS -->
-<div class="block">
-<h2>Результаты</h2>
-<p>Стабильный рост учеников на экзаменах IGCSE, A-level, AP.</p>
-</div>
-
-<!-- FORMATS -->
-<div class="block">
-<h2>Форматы</h2>
-
-<button class="acc-btn">45 минут</button>
-<div class="acc-content">20 €</div>
-
-<button class="acc-btn">80 минут</button>
-<div class="acc-content">40 €</div>
-
-</div>
-
-<!-- CTA -->
-<div class="block" id="contact">
-<h2>Бесплатная консультация</h2>
-<p>Первая диагностика и план обучения.</p>
+<!-- CONTACT -->
+<div class="block reveal" id="contact">
+<h2>Запись</h2>
 
 <a class="button" href="mailto:ekaterinaapply@gmail.com">Email</a>
 <a class="button" href="https://t.me/Restless_Mitochondria">Telegram</a>
@@ -383,9 +468,31 @@ h2 {
 
 </div>
 
-<a class="floating" href="https://t.me/Restless_Mitochondria">Telegram</a>
+<!-- BOOKING -->
+<div class="booking-fab" id="openBooking">Записаться</div>
+
+<div class="booking-overlay" id="bookingOverlay">
+  <div class="booking-modal">
+    <h3>Бесплатная диагностика</h3>
+
+    <form class="booking-form">
+      <input placeholder="Имя">
+      <input placeholder="Email">
+      <select>
+        <option>Biology</option>
+        <option>Chemistry</option>
+      </select>
+      <textarea placeholder="Что нужно?"></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+  </div>
+</div>
+
+<div class="sticky-cta" id="sticky">Записаться</div>
 
 <script>
+
+/* accordion */
 document.querySelectorAll('.acc-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const content = btn.nextElementSibling;
@@ -396,17 +503,24 @@ document.querySelectorAll('.acc-btn').forEach(btn => {
       c.style.maxHeight = null;
     });
 
-    document.querySelectorAll('.acc-btn').forEach(b => {
-      b.classList.remove('open');
-    });
-
     if (!isOpen) {
       content.classList.add('open');
       content.style.maxHeight = content.scrollHeight + "px";
-      btn.classList.add('open');
     }
   });
 });
+
+/* reveal */
+const reveals = document.querySelectorAll('.reveal');
+
+window.addEventListener('scroll', () => {
+  reveals.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+      el.classList.add('show');
+    }
+  });
+});
+
 </script>
 
 </body>
