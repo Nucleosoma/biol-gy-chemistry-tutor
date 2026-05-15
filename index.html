@@ -38,7 +38,7 @@ body {
 /* HERO */
 .hero {
   text-align: center;
-  padding: 35px 20px 10px;
+  padding: 45px 20px 20px;
   position: relative;
 }
 
@@ -48,8 +48,8 @@ body {
   top: -40px;
   left: 50%;
   transform: translateX(-50%);
-  width: 280px;
-  height: 120px;
+  width: 300px;
+  height: 140px;
   background: radial-gradient(circle, rgba(99,212,143,0.25), transparent 70%);
   filter: blur(20px);
   z-index: -1;
@@ -59,10 +59,12 @@ h1 {
   font-family: 'Playfair Display', serif;
   font-size: 46px;
   font-weight: 500;
+  line-height: 1.1;
 }
 
 .subtitle {
-  opacity: 0.7;
+  opacity: 0.75;
+  margin-top: 10px;
 }
 
 /* BLOCK */
@@ -82,26 +84,19 @@ h1 {
     0 25px 60px rgba(0,0,0,0.08),
     inset 0 1px 0 rgba(255,255,255,0.7);
 
-  transition: all 0.35s ease;
+  transition: 0.35s ease;
 }
 
 .block:hover {
   transform: translateY(-6px) scale(1.01);
 }
 
-/* ACCORDION */
+/* ACCORDION WRAPPER */
 .method-item {
-  position: relative;
+  margin-top: 10px;
 }
 
-.method-item:has(.acc-content.open) {
-  background: rgba(99,212,143,0.06);
-  box-shadow: 0 10px 25px rgba(63,168,107,0.10);
-  border-radius: 16px;
-  padding: 4px;
-}
-
-/* BUTTON */
+/* BUTTON (ACCORDEON) */
 .acc-btn {
   width: 100%;
   padding: 16px 18px;
@@ -110,34 +105,57 @@ h1 {
   justify-content: space-between;
   align-items: center;
 
-  background: rgba(255,255,255,0.6);
-  border: 1px solid rgba(0,0,0,0.05);
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(0,0,0,0.06);
   border-radius: 16px;
 
   cursor: pointer;
 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.06),
+    0 2px 6px rgba(0,0,0,0.04);
 
-  transition: 0.3s;
+  transition: all 0.25s ease;
 
-  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
 }
 
 .acc-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.12);
 }
 
+/* light sweep */
+.acc-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(99,212,143,0.12), transparent);
+  transition: 0.5s;
+}
+
+.acc-btn:hover::before {
+  left: 100%;
+}
+
+/* arrow */
 .acc-btn::after {
   content: "→";
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(99,212,143,0.15);
-  color: #3fa86b;
+
+  border-radius: 50%;
+  background: rgba(99,212,143,0.18);
+  color: #2f6b47;
+
   transition: 0.3s;
 }
 
@@ -145,7 +163,7 @@ h1 {
   transform: rotate(90deg);
 }
 
-/* CONTENT + BOUNCE */
+/* CONTENT */
 .acc-content {
   max-height: 0;
   overflow: hidden;
@@ -154,17 +172,14 @@ h1 {
 
   padding: 0 16px;
 
-  transition:
-    max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.35s ease,
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .acc-content.open {
   opacity: 1;
   transform: translateY(0);
-  padding: 12px 16px 16px 16px;
-  animation: bounceIn 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  padding: 12px 16px;
+  animation: bounceIn 0.55s ease;
 }
 
 @keyframes bounceIn {
@@ -173,7 +188,7 @@ h1 {
   100% { transform: translateY(0); }
 }
 
-/* BUTTON CTA */
+/* CTA BUTTON */
 .button {
   display: block;
   text-align: center;
@@ -186,6 +201,7 @@ h1 {
   text-decoration: none;
 
   background: linear-gradient(135deg, #63d48f, #3fa86b);
+
   box-shadow: 0 18px 40px rgba(63,168,107,0.35);
 
   transition: 0.3s;
@@ -195,29 +211,7 @@ h1 {
   transform: translateY(-3px) scale(1.03);
 }
 
-/* sticky CTA (JS) */
-.sticky-cta {
-  position: fixed;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #1f3227;
-  color: white;
-  padding: 12px 18px;
-  border-radius: 999px;
-  font-size: 14px;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.3s;
-  z-index: 999;
-}
-
-.sticky-cta.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* scroll reveal */
+/* reveal */
 .reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -232,7 +226,6 @@ h1 {
 /* mobile */
 @media (max-width: 600px) {
   h1 { font-size: 34px; }
-  .block { margin: 16px 0; padding: 22px; }
 }
 
 </style>
@@ -244,9 +237,9 @@ h1 {
 
 <!-- HERO -->
 <div class="hero reveal">
-<h1>Репетитор по биологии и химии</h1>
-<p class="subtitle">IGCSE • A-level • AP Biology & Chemistry</p>
-<a class="hero-cta button" href="#contact">Бесплатная консультация</a>
+  <h1>Репетитор по биологии и химии</h1>
+  <p class="subtitle">IGCSE • A-level • AP Biology & Chemistry</p>
+  <a class="button" href="#contact">Бесплатная консультация</a>
 </div>
 
 <!-- ABOUT -->
@@ -255,56 +248,43 @@ h1 {
 
 <div class="method-item">
 <button class="acc-btn">Казанский Федеральный Университет</button>
-<div class="acc-content">
-Биохимия, красный диплом. Начало преподавания с 2 курса.
-</div>
+<div class="acc-content">Биохимия, красный диплом.</div>
 </div>
 
 <div class="method-item">
 <button class="acc-btn">PhD — Страсбург</button>
-<div class="acc-content">
-Международная аспирантура Россия–Франция. PhD с высшей оценкой.
-</div>
+<div class="acc-content">Международная аспирантура, защита на высший балл.</div>
 </div>
 
 <div class="method-item">
 <button class="acc-btn">Международный опыт</button>
-<div class="acc-content">
-Международная Школа Герценовского Университета и Le Sallay Academy & Dialogue.
-</div>
+<div class="acc-content">Герценовский университет (международная школа) и Le Sallay Academy.</div>
 </div>
 
 <div class="method-item">
 <button class="acc-btn">Билингвы</button>
-<div class="acc-content">
-Работа с учениками в русско-английской образовательной среде.
-</div>
+<div class="acc-content">Работа с русско-английскими учениками.</div>
 </div>
 
 </div>
 
-<!-- PSYCHOLOGY -->
+<!-- APPROACH -->
 <div class="block reveal">
 <h2>Подход</h2>
 
 <div class="method-item">
 <button class="acc-btn">Эмпатичный формат</button>
-<div class="acc-content">Без давления и стресса.</div>
+<div class="acc-content">Без давления, с пониманием психологии подростков.</div>
 </div>
 
 <div class="method-item">
-<button class="acc-btn">Психология обучения</button>
-<div class="acc-content">Подростковый и детский подход.</div>
-</div>
-
-<div class="method-item">
-<button class="acc-btn">Комфорт</button>
-<div class="acc-content">Уверенность и спокойствие на уроках.</div>
+<button class="acc-btn">Структурное обучение</button>
+<div class="acc-content">От простого к сложному, без перегруза.</div>
 </div>
 
 </div>
 
-<!-- FAQ (ВОЗВРАЩЕНО) -->
+<!-- FAQ -->
 <div class="block reveal">
 <h2>Частые вопросы</h2>
 
@@ -315,7 +295,7 @@ h1 {
 
 <div class="method-item">
 <button class="acc-btn">Почему 80 минут?</button>
-<div class="acc-content">Оптимальный баланс теории и практики.</div>
+<div class="acc-content">Оптимальный баланс практики и теории.</div>
 </div>
 
 <div class="method-item">
@@ -327,17 +307,13 @@ h1 {
 
 <!-- CONTACT -->
 <div class="block reveal" id="contact">
-<h2>Бесплатная консультация</h2>
+<h2>Запись</h2>
 
 <a class="button" href="mailto:ekaterinaapply@gmail.com">Email</a>
 <a class="button" href="https://t.me/Restless_Mitochondria">Telegram</a>
-</div>
 
 </div>
 
-<!-- sticky CTA -->
-<div class="sticky-cta" id="sticky">
-Записаться на консультацию
 </div>
 
 <script>
@@ -345,6 +321,7 @@ h1 {
 /* accordion */
 document.querySelectorAll('.acc-btn').forEach(btn => {
   btn.addEventListener('click', () => {
+
     const content = btn.nextElementSibling;
     const isOpen = content.classList.contains('open');
 
@@ -360,27 +337,19 @@ document.querySelectorAll('.acc-btn').forEach(btn => {
       content.style.maxHeight = content.scrollHeight + "px";
       btn.classList.add('open');
     }
+
   });
 });
 
-/* scroll reveal */
-const reveals = document.querySelectorAll('.reveal');
+/* reveal */
+const items = document.querySelectorAll('.reveal');
 
 window.addEventListener('scroll', () => {
-  reveals.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 80) {
+  items.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 80) {
       el.classList.add('show');
     }
   });
-
-  /* sticky CTA */
-  const sticky = document.getElementById('sticky');
-  if (window.scrollY > 400) {
-    sticky.classList.add('show');
-  } else {
-    sticky.classList.remove('show');
-  }
 });
 
 </script>
