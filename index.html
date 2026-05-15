@@ -173,6 +173,68 @@ h1 {
   transform: rotate(90deg) scale(1.1);
   background: rgba(63,168,107,0.25);
 }
+  .price-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.price-card {
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 18px;
+
+  padding: 18px 18px;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.06),
+    0 4px 10px rgba(0,0,0,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+
+  transition: 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.price-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.12);
+}
+
+.price-title {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.price-sub {
+  font-size: 13px;
+  opacity: 0.65;
+  margin-top: 2px;
+}
+
+.price-value {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 10px 0;
+  color: #2f6b47;
+}
+
+.price-desc {
+  font-size: 14px;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+/* выделенная карточка */
+.price-card.highlight {
+  border: 1px solid rgba(63,168,107,0.25);
+  background: rgba(99,212,143,0.08);
+  box-shadow:
+    0 15px 35px rgba(63,168,107,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.85);
+}
 
 /* CONTENT */
 .acc-content {
@@ -307,6 +369,41 @@ h1 {
 
 </div>
 
+  <div class="block reveal">
+  <h2>Форматы занятий</h2>
+
+  <div class="price-grid">
+
+    <div class="price-card">
+      <div class="price-title">Индивидуальное занятие</div>
+      <div class="price-sub">45 минут</div>
+      <div class="price-value">20 €</div>
+      <div class="price-desc">
+        Объяснение сложных концепций и разбор текущих задач, работа с симуляциями научных экспериментов, образовательными играми, квизами.
+      </div>
+    </div>
+
+    <div class="price-card highlight">
+      <div class="price-title">Экзаменационная подготовка</div>
+      <div class="price-sub">80 минут</div>
+      <div class="price-value">40 €</div>
+      <div class="price-desc">
+        Стратегия экзамена, решение past papers, разбор ошибок и укрепление слабых мест.
+      </div>
+    </div>
+
+    <div class="price-card">
+      <div class="price-title">Групповые занятия</div>
+      <div class="price-sub">до 3 человек</div>
+      <div class="price-value">15–30 €</div>
+      <div class="price-desc">
+        Формируются при наборе группы с одной программой обучения и одинаковым уровнем.
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- FAQ -->
 <div class="block reveal">
 <h2>Частые вопросы</h2>
@@ -318,7 +415,7 @@ h1 {
 
 <div class="method-item">
 <button class="acc-btn">Почему 80 минут?</button>
-<div class="acc-content">Оптимальный баланс практики и теории при подготовке к экзаменам, ученик не успевает устать, работая максимально эффективно и с тестами и с теорией. С учениками младшего возраста или при подтягивания общих школьных знаний мы занимаемся 45 минут. </div>
+<div class="acc-content">Оптимальный баланс практики и теории при подготовке к экзаменам, ученик не успевает устать, работая максимально эффективно и с тестами, и с теорией. С учениками младшего возраста или при подтягивания общих школьных знаний мы занимаемся 45 минут. </div>
 </div>
 
 <div class="method-item">
